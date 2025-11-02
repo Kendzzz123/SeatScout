@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | SeatScout</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #4b1c24, #611d24);
+      color: #fff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* Navbar */
+    header {
+      width: 100%;
+      background: #1d232a;
+      padding: 15px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header img {
+      width: 50px;
+      border-radius: 50%;
+      margin-right: 10px;
+    }
+
+    header .brand {
+      font-size: 1.4rem;
+      font-weight: 700;
+    }
+
+    .brand .seat {
+      color: #fff;
+    }
+
+    .brand .scout {
+      color: #e63946;
+    }
+
+    nav a {
+      color: #fff;
+      margin-left: 30px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #e63946;
+    }
+
+    /* Contact Section */
+    .contact-container {
+      display: flex;
+      background: #2a2d30;
+      border-radius: 12px;
+      overflow: hidden;
+      width: 85%;
+      max-width: 1000px;
+      margin: 60px auto;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+    }
+
+    .contact-info {
+      background: #161a1e;
+      flex: 1;
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .contact-info h2 {
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .contact-info p {
+      font-size: 0.9rem;
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 20px;
+    }
+
+    .contact-info span {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .contact-info span b {
+      color: #e63946;
+    }
+
+    .contact-form {
+      flex: 1.2;
+      background: #35383b;
+      padding: 50px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    .form-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    label {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #ddd;
+      margin-bottom: 6px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      background: #4a4d50;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+      transition: 0.3s;
+    }
+
+    input:focus, textarea:focus {
+      background: #5c5f62;
+      box-shadow: 0 0 0 2px #e63946;
+    }
+
+    textarea {
+      resize: none;
+      min-height: 120px;
+    }
+
+    .form-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 5px;
+    }
+
+    .refund-btn {
+      background: #65686c;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .refund-btn:hover {
+      background: #7a7d81;
+    }
+
+    .submit-btn {
+      background: #e63946;
+      border: none;
+      padding: 10px 24px;
+      border-radius: 6px;
+      color: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #ff505f;
+    }
+
+    .guest-link {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+
+    .guest-link a {
+      color: #e63946;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .guest-link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Popup Message */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.8);
+      background: #1d232a;
+      color: #fff;
+      padding: 25px 35px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+      text-align: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+
+    .popup.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    @media (max-width: 768px) {
+      .contact-container {
+        flex-direction: column;
+      }
+
+      .form-row {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div style="display: flex; align-items: center;">
+      <img src="images/logo.png" alt="SeatScout Logo">
+      <span class="brand"><span class="seat">Seat</span><span class="scout">Scout</span></span>
+    </div>
+    <nav>
+      <a href="#">Explore</a>
+      <a href="#">Favorites</a>
+      <a href="#">MyCart</a>
+      <a href="#">Help</a>
+    </nav>
+  </header>
+
+  <section class="contact-container">
+    <div class="contact-info">
+      <h2>Contact Us</h2>
+      <p>Have a question about your tickets, an event, or partnership opportunities? Our team is here to assist you 24/7. Let's make your next event experience smooth and unforgettable.</p>
+      <span><b>Email:</b> support@seatscount.com</span>
+      <span><b>Phone:</b> +63 900 123 4567</span>
+      <span><b>Location:</b> Makati City, Metro Manila</span>
+    </div>
+
+    <div class="contact-form">
+      <form id="contactForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Doe" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone</label>
+            <input type="tel" id="phone" placeholder="+63 900 000 0000" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="youremail@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Write your message here..." required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="refund-btn" id="refundBtn">Refund Policy</button>
+          <button type="submit" class="submit-btn">Submit</button>
+        </div>
+
+        <div class="guest-link">
+          Or continue without an account — <a href="index.html">Log in as Guest</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <div class="popup" id="popup">Message sent successfully!</div>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const popup = document.getElementById('popup');
+    const refundBtn = document.getElementById('refundBtn');
+
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      popup.classList.add('show');
+      setTimeout(() => popup.classList.remove('show'), 2500);
+      form.reset();
+    });
+
+    refundBtn.addEventListener('click', () => {
+      alert('Our refund policy allows cancellations up to 24 hours before the event date.');
+    });
+  </script>
+
+</body>
+</html>

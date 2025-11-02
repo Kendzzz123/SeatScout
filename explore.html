@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Events UI Hard-Coded Modals</title>
+  <style>
+    /* GLOBAL STYLES */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    }
+
+    body {
+      background: #f8f9fa;
+    }
+
+    .page {
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 60px;
+    }
+
+    /* TOP BUTTONS */
+    .top-buttons {
+      display: flex;
+      gap: 36px;
+      margin-bottom: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn {
+      font-size: 14px;
+      color: #6b6f76;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 12px;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+
+    .icon-btn:hover {
+      color: #ff4f5a;
+      transform: scale(1.08);
+    }
+
+    .icon-btn.active {
+      background: #ff4f5a;
+      color: white;
+    }
+
+    /* FILTER BUTTONS */
+    .filter-buttons {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+
+    .filter-btn {
+      padding: 10px 18px;
+      border-radius: 999px;
+      border: 1px solid #e6e7ea;
+      background: white;
+      color: #6b6f76;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .filter-btn:hover {
+      transform: scale(1.05);
+    }
+
+    .filter-btn.active {
+      background: #ff4f5a;
+      color: white;
+      border-color: transparent;
+    }
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: #e6e7ea;
+      margin: 20px 0;
+    }
+
+    /* SELECTOR MODALS */
+    .selector-btn {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #e6e7ea;
+      background: #fff;
+      cursor: pointer;
+      font-size: 14px;
+      margin-right: 10px;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 300px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+    }
+
+    .modal-content h4 {
+      margin-bottom: 10px;
+    }
+
+    .modal-content button {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 6px;
+      border: none;
+      border-radius: 8px;
+      background: #f0f0f0;
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .modal-content button:hover {
+      background: #ff4f5a;
+      color: white;
+    }
+
+    /* Dates grid inside modal */
+    .modal-content .date-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 8px;
+    }
+
+    .modal-content .date-grid button {
+      margin: 0;
+    }
+
+    /* HEADER */
+    h3 {
+      text-align: center;
+      font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 25px;
+    }
+
+    /* CARDS GRID */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 36px;
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 16px;
+      background: pink;
+      height: 280px;
+      text-decoration: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 195px;
+      object-fit: cover;
+      display: block;
+      border-top-left-radius: 16px;
+      border-top-right-radius: 16px;
+    }
+
+
+    .card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12);
+    }
+
+    .card-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 14px;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .card-content h4 {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 5px;
+      color: #000;
+    }
+
+    .card-content p {
+      font-size: 13px;
+      color: #6b6f76;
+    }
+
+    /* HEART BUTTON */
+    .badge-heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 34px;
+      height: 34px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: 1px solid rgba(30, 30, 40, 0.06);
+    }
+
+    .badge-heart:hover {
+      transform: scale(1.1);
+    }
+
+    .badge-heart.hearted {
+      background: #ffe6eb;
+      color: #ff3b5e;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:1060px) {
+      .cards {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media(max-width:820px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media(max-width:480px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="top-buttons">
+      <button class="icon-btn active" data-type="all"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="lucide lucide-tickets-icon lucide-tickets">
+          <path d="m4.5 8 10.58-5.06a1 1 0 0 1 1.342.488L18.5 8" />
+          <path d="M6 10V8" />
+          <path d="M6 14v1" />
+          <path d="M6 19v2" />
+          <rect x="2" y="8" width="20" height="13" rx="2" />
+        </svg> All Events</button>
+      <button class="icon-btn" data-type="concerts"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="lucide lucide-mic-vocal-icon lucide-mic-vocal">
+          <path d="m11 7.601-5.994 8.19a1 1 0 0 0 .1 1.298l.817.818a1 1 0 0 0 1.314.087L15.09 12" />
+          <path d="M16.5 21.174C15.5 20.5 14.372 20 13 20c-2.058 0-3.928 2.356-6 2-2.072-.356-2.775-3.369-1.5-4.5" />
+          <circle cx="16" cy="7" r="5" />
+        </svg> Concerts</button>
+      <button class="icon-btn" data-type="sports"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="lucide lucide-volleyball-icon lucide-volleyball">
+          <path d="M11.1 7.1a16.55 16.55 0 0 1 10.9 4" />
+          <path d="M12 12a12.6 12.6 0 0 1-8.7 5" />
+          <path d="M16.8 13.6a16.55 16.55 0 0 1-9 7.5" />
+          <path d="M20.7 17a12.8 12.8 0 0 0-8.7-5 13.3 13.3 0 0 1 0-10" />
+          <path d="M6.3 3.8a16.55 16.55 0 0 0 1.9 11.5" />
+          <circle cx="12" cy="12" r="10" />
+        </svg> Sports</button>
+      <button class="icon-btn" data-type="theater"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+          viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="lucide lucide-theater-icon lucide-theater">
+          <path d="M2 10s3-3 3-8" />
+          <path d="M22 10s-3-3-3-8" />
+          <path d="M10 2c0 4.4-3.6 8-8 8" />
+          <path d="M14 2c0 4.4 3.6 8 8 8" />
+          <path d="M2 10s2 2 2 5" />
+          <path d="M22 10s-2 2-2 5" />
+          <path d="M8 15h8" />
+          <path d="M2 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+          <path d="M14 22v-1a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1" />
+        </svg> Theater</button>
+      <button class="icon-btn" data-type="talkshow">🎙 TalkShow</button>
+    </div>
+
+    <div class="filter-buttons"></div>
+    <div class="divider"></div>
+
+    <div class="selectors">
+      <button id="locationBtn" class="selector-btn">All Locations</button>
+      <button id="dateBtn" class="selector-btn">All Dates</button>
+    </div>
+
+    <h3>Explore Events near All</h3>
+    <div class="cards"></div>
+  </div>
+
+  <!-- MODALS -->
+  <div id="locationModal" class="modal">
+    <div class="modal-content">
+      <h4>Select Location</h4>
+    </div>
+  </div>
+
+  <div id="dateModal" class="modal">
+    <div class="modal-content">
+      <h4>Select Date</h4>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      concerts: {
+        filters: ['All Concerts', 'Rock', 'Pop', 'Rnb', 'Classical'],
+        cards: [
+          { title: 'Sabrina Carpenter', genre: 'Pop', venue: 'SM Arena', location: 'Manila', date: '2025-11-14', time: '8:00 PM', link: '#', image: 'images/sabrina.jpg' },
+          { title: 'Ariana Grande', genre: 'Pop', venue: 'SM Arena', location: 'Makati', date: '2025-11-15', time: '8:00 PM', link: '#' },
+          { title: 'Harry Styles', genre: 'Rock', venue: 'SM Arena', location: 'Quezon City', date: '2025-11-16', time: '8:00 PM', link: '#' },
+          { title: 'Bruno Mars', genre: 'Rnb', venue: 'SM Arena', location: 'Manila', date: '2025-11-17', time: '8:00 PM', link: '#' },
+          { title: 'Coldplay', genre: 'Rock', venue: 'MOA Arena', location: 'Taguig', date: '2025-11-18', time: '7:00 PM', link: '#' },
+          { title: 'Ed Sheeran', genre: 'Pop', venue: 'RCBC Plaza', location: 'Pasig', date: '2025-11-19', time: '8:00 PM', link: '#' },
+          { title: 'Imagine Dragons', genre: 'Rock', venue: 'SM Arena', location: 'Makati', date: '2025-11-20', time: '9:00 PM', link: '#' },
+          { title: 'Adele Live', genre: 'Pop', venue: 'MOA Arena', location: 'Manila', date: '2025-11-21', time: '8:00 PM', link: '#' },
+          { title: 'Beyonce', genre: 'Rnb', venue: 'SM Arena', location: 'Quezon City', date: '2025-11-22', time: '8:00 PM', link: '#' },
+          { title: 'The Weeknd', genre: 'Rnb', venue: 'RCBC Plaza', location: 'Taguig', date: '2025-11-23', time: '8:00 PM', link: '#' }
+        ]
+      },
+      sports: {
+        filters: ['All Sports', 'Basketball', 'Football', 'Boxing'],
+        cards: [
+          { title: 'NBA Live', genre: 'Basketball', venue: 'Quezon City Arena', location: 'Quezon City', date: '2025-11-18', time: '7:00 PM', link: '#' },
+          { title: 'Football Cup', genre: 'Football', venue: 'Rizal Stadium', location: 'Makati', date: '2025-11-19', time: '6:00 PM', link: '#' },
+          { title: 'Boxing Night', genre: 'Boxing', venue: 'MOA Arena', location: 'Manila', date: '2025-11-20', time: '8:00 PM', link: '#' },
+          { title: 'PBA Match', genre: 'Basketball', venue: 'Araneta', location: 'Makati', date: '2025-11-21', time: '7:30 PM', link: '#' },
+          { title: 'Local Boxing', genre: 'Boxing', venue: 'MOA Arena', location: 'Quezon City', date: '2025-11-22', time: '8:00 PM', link: '#' },
+          { title: 'Football League', genre: 'Football', venue: 'SM Arena', location: 'Taguig', date: '2025-11-23', time: '6:00 PM', link: '#' },
+          { title: 'Basketball Finals', genre: 'Basketball', venue: 'RCBC Plaza', location: 'Pasig', date: '2025-11-24', time: '7:00 PM', link: '#' },
+          { title: 'Boxing Show', genre: 'Boxing', venue: 'MOA Arena', location: 'Taguig', date: '2025-11-25', time: '8:00 PM', link: '#' },
+          { title: 'Soccer Cup', genre: 'Football', venue: 'Araneta', location: 'Manila', date: '2025-11-26', time: '6:00 PM', link: '#' },
+          { title: 'Basketball Clash', genre: 'Basketball', venue: 'SM Arena', location: 'Makati', date: '2025-11-27', time: '7:00 PM', link: '#' }
+        ]
+      },
+      theater: {
+        filters: ['All Theater', 'Musical', 'Drama', 'Comedy', 'Play'],
+        cards: [
+          { title: 'Hamilton', genre: 'Musical', venue: 'Cultural Center', location: 'Manila', date: '2025-11-21', time: '7:30 PM', link: '#' },
+          { title: 'Romeo & Juliet', genre: 'Drama', venue: 'PETA Theater', location: 'Quezon City', date: '2025-11-22', time: '7:00 PM', link: '#' },
+          { title: 'The Book of Mormon', genre: 'Comedy', venue: 'RCBC Plaza', location: 'Makati', date: '2025-11-23', time: '8:00 PM', link: '#' },
+          { title: 'Macbeth', genre: 'Play', venue: 'Cultural Center', location: 'Manila', date: '2025-11-24', time: '7:30 PM', link: '#' },
+          { title: 'Les Misérables', genre: 'Musical', venue: 'RCBC Plaza', location: 'Taguig', date: '2025-11-25', time: '8:00 PM', link: '#' },
+          { title: 'Othello', genre: 'Drama', venue: 'PETA Theater', location: 'Pasig', date: '2025-11-26', time: '7:00 PM', link: '#' },
+          { title: 'Comedy Night', genre: 'Comedy', venue: 'RCBC Plaza', location: 'Makati', date: '2025-11-27', time: '8:00 PM', link: '#' },
+          { title: 'King Lear', genre: 'Play', venue: 'Cultural Center', location: 'Quezon City', date: '2025-11-28', time: '7:30 PM', link: '#' },
+          { title: 'Wicked', genre: 'Musical', venue: 'RCBC Plaza', location: 'Manila', date: '2025-11-29', time: '8:00 PM', link: '#' },
+          { title: 'Death of a Salesman', genre: 'Play', venue: 'PETA Theater', location: 'Taguig', date: '2025-11-30', time: '7:30 PM', link: '#' }
+        ]
+      },
+      talkshow: {
+        filters: ['All TalkShows', 'Podcast', 'Interview', 'Panel', 'Stand-Up'],
+        cards: [
+          { title: 'Joe Rogan Experience', genre: 'Podcast', venue: 'MOA Arena', location: 'Manila', date: '2025-11-25', time: '8:00 PM', link: '#' },
+          { title: 'Late Night Manila', genre: 'Interview', venue: 'RCBC Plaza', location: 'Makati', date: '2025-11-26', time: '9:00 PM', link: '#' },
+          { title: 'Tech Panel 2050', genre: 'Panel', venue: 'Smart Araneta', location: 'Quezon City', date: '2025-11-27', time: '4:00 PM', link: '#' },
+          { title: 'Comedy Hour', genre: 'Stand-Up', venue: 'Music Museum', location: 'Makati', date: '2025-11-28', time: '8:00 PM', link: '#' },
+          { title: 'Podcast Live', genre: 'Podcast', venue: 'MOA Arena', location: 'Taguig', date: '2025-11-29', time: '8:00 PM', link: '#' },
+          { title: 'Interview Night', genre: 'Interview', venue: 'RCBC Plaza', location: 'Pasig', date: '2025-11-30', time: '9:00 PM', link: '#' },
+          { title: 'Tech Panel Redux', genre: 'Panel', venue: 'Smart Araneta', location: 'Makati', date: '2025-12-01', time: '4:00 PM', link: '#' },
+          { title: 'Stand-Up Special', genre: 'Stand-Up', venue: 'Music Museum', location: 'Manila', date: '2025-12-02', time: '8:00 PM', link: '#' },
+          { title: 'Podcast Evening', genre: 'Podcast', venue: 'MOA Arena', location: 'Quezon City', date: '2025-12-03', time: '8:00 PM', link: '#' },
+          { title: 'Late Night Redux', genre: 'Interview', venue: 'RCBC Plaza', location: 'Taguig', date: '2025-12-04', time: '9:00 PM', link: '#' }
+        ]
+      }
+    };
+
+    // VARIABLES
+    const topBtns = document.querySelectorAll('.icon-btn');
+    const filterContainer = document.querySelector('.filter-buttons');
+    const cardsContainer = document.querySelector('.cards');
+    const locationBtn = document.getElementById('locationBtn');
+    const dateBtn = document.getElementById('dateBtn');
+    const locationModal = document.getElementById('locationModal');
+    const dateModal = document.getElementById('dateModal');
+
+    let activeType = 'all', activeGenre = 'all', activeLocation = 'all', activeDate = 'all', allDisplayedCards = [];
+
+    // TOP BUTTONS
+    topBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        topBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        activeType = btn.dataset.type;
+        activeGenre = 'all';
+        if (activeType === 'all') renderAllEvents();
+        else renderCategory(activeType);
+      })
+    });
+
+    // RENDER ALL
+    function renderAllEvents() { filterContainer.innerHTML = ''; allDisplayedCards = Object.values(data).flatMap(c => c.cards); updateDisplayedCards(); }
+
+    // RENDER CATEGORY
+    function renderCategory(type) {
+      const cat = data[type];
+      filterContainer.innerHTML = '';
+      cat.filters.forEach((f, i) => {
+        const btn = document.createElement('button');
+        btn.textContent = f;
+        btn.classList.add('filter-btn');
+        if (i === 0) btn.classList.add('active');
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          activeGenre = f.includes('All') ? 'all' : f;
+          updateDisplayedCards();
+        });
+        filterContainer.appendChild(btn);
+      });
+      allDisplayedCards = cat.cards;
+      updateDisplayedCards();
+    }
+
+    // UNIQUE LOCATIONS & DATES
+    function getUniqueLocations() { return [...new Set(Object.values(data).flatMap(c => c.cards.map(card => card.location)))]; }
+    function getUniqueDates() { return [...new Set(Object.values(data).flatMap(c => c.cards.map(card => card.date)))].sort(); }
+
+    // MODALS
+    locationBtn.addEventListener('click', () => { renderLocationModal(); locationModal.style.display = 'flex'; });
+    dateBtn.addEventListener('click', () => { renderDateModal(); dateModal.style.display = 'flex'; });
+
+    // LOCATION MODAL
+    function renderLocationModal() {
+      const container = locationModal.querySelector('.modal-content');
+      container.innerHTML = '<h4>Select Location</h4>';
+      ['All', ...getUniqueLocations()].forEach(loc => {
+        const btn = document.createElement('button');
+        btn.textContent = loc;
+        btn.addEventListener('click', () => {
+          if (activeLocation === loc || (activeLocation === 'all' && loc === 'All')) {
+            // unselect if clicked again
+            activeLocation = 'all';
+            locationBtn.textContent = 'All Locations';
+          } else {
+            activeLocation = loc === 'All' ? 'all' : loc;
+            locationBtn.textContent = loc;
+          }
+          locationModal.style.display = 'none';
+          updateDisplayedCards();
+        });
+        container.appendChild(btn);
+      });
+    }
+
+
+    // DATE MODAL
+    function renderDateModal() {
+      const container = dateModal.querySelector('.modal-content');
+      container.innerHTML = '<h4>Select Date</h4>';
+      const grid = document.createElement('div');
+      grid.classList.add('date-grid');
+      ['All', ...getUniqueDates()].forEach(dt => {
+        const btn = document.createElement('button');
+        btn.textContent = dt;
+        btn.addEventListener('click', () => {
+          if (activeDate === dt || (activeDate === 'all' && dt === 'All')) {
+            // unselect if clicked again
+            activeDate = 'all';
+            dateBtn.textContent = 'All Dates';
+          } else {
+            activeDate = dt === 'All' ? 'all' : dt;
+            dateBtn.textContent = dt;
+          }
+          dateModal.style.display = 'none';
+          updateDisplayedCards();
+        });
+        grid.appendChild(btn);
+      });
+      container.appendChild(grid);
+    }
+
+    // CLOSE MODALS ON OUTSIDE CLICK
+    window.addEventListener('click', e => {
+      if (e.target === locationModal) locationModal.style.display = 'none';
+      if (e.target === dateModal) dateModal.style.display = 'none';
+    });
+
+    // UPDATE CARDS
+    function updateDisplayedCards() {
+      const filtered = allDisplayedCards.filter(card => {
+        const matchGenre = activeGenre === 'all' || card.genre === activeGenre;
+        const matchLocation = activeLocation === 'all' || card.location === activeLocation;
+        const matchDate = activeDate === 'all' || card.date === activeDate;
+        return matchGenre && matchLocation && matchDate;
+      });
+
+      cardsContainer.innerHTML = '';
+      filtered.forEach(createCard);
+      animateCards();
+      attachHeartEvents();
+      const displayLocation = activeLocation === 'all' ? 'All' : activeLocation;
+      document.querySelector('h3').textContent = `Explore Events near ${displayLocation}`;
+    }
+
+    // CREATE CARD
+    function createCard(card) {
+      const link = document.createElement('a');
+      link.href = card.link;
+      link.classList.add('card');
+      link.innerHTML = `
+    <img src="${card.image || 'https://via.placeholder.com/400x180'}" alt="${card.title}" class="card-img"/>
+    <button class="badge-heart">♡</button>
+    <div class="card-content">
+      <h4>${card.title}</h4>
+      <p>${card.venue} • ${card.location} • ${card.date} • ${card.time}</p>
+    </div>
+  `;
+      cardsContainer.appendChild(link);
+    }
+
+    // ANIMATE CARDS
+    function animateCards() { document.querySelectorAll('.card').forEach((c, i) => setTimeout(() => c.classList.add('show'), i * 100)); }
+
+    // HEART BUTTON
+    function attachHeartEvents() { document.querySelectorAll('.badge-heart').forEach(btn => { btn.addEventListener('click', e => { e.stopPropagation(); e.preventDefault(); btn.classList.toggle('hearted'); btn.textContent = btn.classList.contains('hearted') ? '♥' : '♡'; }); }); }
+
+    renderAllEvents();
+  </script>
+</body>
+
+</html>

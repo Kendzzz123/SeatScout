@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeatScout - Sign In / Sign Up</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f3f3f3;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .form-container {
+      position: relative;
+      width: 320px;
+    }
+
+    .form-box {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      padding: 30px 25px;
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .form-box.active {
+      display: flex;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 20px;
+      color: #333;
+    }
+
+    p {
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 15px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 5px;
+      background-color: #d81e1e;
+      color: white;
+      font-weight: 500;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #b31616;
+    }
+
+    .guest-btn {
+      background-color: white;
+      color: #d81e1e;
+      border: 1px solid #d81e1e;
+    }
+
+    .guest-btn:hover {
+      background-color: #d81e1e;
+      color: white;
+    }
+
+    .small-text {
+      margin-top: 10px;
+      font-size: 12px;
+      color: #555;
+    }
+
+    .small-text a {
+      color: #d81e1e;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .small-text a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="form-container">
+    <!-- Sign In Box -->
+    <div class="form-box active" id="signInBox">
+      <h2>Welcome Back</h2>
+      <p>Sign in to access your tickets and manage bookings.</p>
+      <input type="email" placeholder="Email Address" id="signinEmail">
+      <input type="password" placeholder="Password" id="signinPassword">
+      <button id="signInBtn">Sign In</button>
+      <button class="guest-btn" id="guestBtn">Continue as Guest</button>
+      <div class="small-text">Don’t have an account? <a id="toSignUp">Sign Up</a></div>
+    </div>
+
+    <!-- Sign Up Box -->
+    <div class="form-box" id="signUpBox">
+      <h2>Create Your Account</h2>
+      <p>Be a Seater in SeatScout to discover and book your favorite events.</p>
+      <input type="text" placeholder="Full Name" id="signupName">
+      <input type="email" placeholder="Email Address" id="signupEmail">
+      <input type="password" placeholder="Password" id="signupPassword">
+      <button id="signUpBtn">Sign Up</button>
+      <div class="small-text">Already have an account? <a id="toSignIn">Sign In</a></div>
+    </div>
+  </div>
+
+  <script>
+    const signInBox = document.getElementById('signInBox');
+    const signUpBox = document.getElementById('signUpBox');
+    const toSignUp = document.getElementById('toSignUp');
+    const toSignIn = document.getElementById('toSignIn');
+    const guestBtn = document.getElementById('guestBtn');
+    const signUpBtn = document.getElementById('signUpBtn');
+    const signInBtn = document.getElementById('signInBtn');
+
+    // Switch to Sign Up
+    toSignUp.addEventListener('click', () => {
+      signInBox.classList.remove('active');
+      signUpBox.classList.add('active');
+    });
+
+    // Switch to Sign In
+    toSignIn.addEventListener('click', () => {
+      signUpBox.classList.remove('active');
+      signInBox.classList.add('active');
+    });
+
+    // Continue as Guest
+    guestBtn.addEventListener('click', () => {
+      window.location.href = "index.html";
+    });
+
+    // Sign Up: Save user credentials in localStorage
+    signUpBtn.addEventListener('click', () => {
+      const name = document.getElementById('signupName').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const password = document.getElementById('signupPassword').value.trim();
+
+      if (!name || !email || !password) {
+        alert("Please fill out all fields.");
+        return;
+      }
+
+      const user = { name, email, password };
+      localStorage.setItem('user', JSON.stringify(user));
+
+      alert("Account created successfully! You can now sign in.");
+
+      // Switch to sign in page
+      signUpBox.classList.remove('active');
+      signInBox.classList.add('active');
+    });
+
+    // Sign In: Check credentials
+    signInBtn.addEventListener('click', () => {
+      const email = document.getElementById('signinEmail').value.trim();
+      const password = document.getElementById('signinPassword').value.trim();
+
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (storedUser && email === storedUser.email && password === storedUser.password) {
+        alert("Login successful!");
+        window.location.href = "index.html"; // redirect after login
+      } else {
+        alert("Invalid email or password.");
+      }
+    });
+  </script>
+
+</body>
+</html>
