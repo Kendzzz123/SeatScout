@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SeatScout | Who We Are & We Guarantee You</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/a2e0e9bb0f.js" crossorigin="anonymous"></script>
+  <style>
+    :root {
+      --primary: #343A40;
+      --accent: #DC3545;
+      --secondary: #6C757D;
+      --highlight: #F8F9FA;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--highlight);
+      color: var(--primary);
+      line-height: 1.6;
+    }
+
+    section {
+      padding: 80px 40px;
+      max-width: 1200px;
+      margin: auto;
+      position: relative;
+    }
+
+    h1.section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    p.section-subtitle {
+      text-align: center;
+      color: var(--secondary);
+      margin-bottom: 60px;
+      font-size: 1.1rem;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle at top right, rgba(255,255,255,0.1), transparent 60%);
+      top: -50%;
+      right: -50%;
+      transform: rotate(20deg);
+    }
+
+    .header h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      z-index: 2;
+      position: relative;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: #f8f9fa;
+      opacity: 0.9;
+      margin-top: 10px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ===== DIVIDER ===== */
+    .section-divider {
+      width: 80%;
+      height: 3px;
+      background: linear-gradient(to right, var(--accent), var(--primary));
+      border-radius: 3px;
+      margin: 80px auto;
+      opacity: 0.9;
+      transition: all 0.4s ease;
+    }
+
+    .section-divider:hover {
+      width: 90%;
+      opacity: 1;
+      box-shadow: 0 0 12px rgba(220, 53, 69, 0.5);
+    }
+
+    /* ===== WHO WE ARE ===== */
+    .who-we-are {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 50px;
+    }
+
+    .who-we-are img {
+      width: 100%;
+      max-width: 500px;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    }
+
+    .who-content {
+      flex: 1;
+      max-width: 550px;
+    }
+
+    .who-content h2 {
+      color: var(--accent);
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .who-content p {
+      font-size: 1.05rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .who-content ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .who-content ul li {
+      margin: 10px 0;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .who-content ul li i {
+      color: var(--accent);
+    }
+
+    /* ===== GUARANTEE ===== */
+    .guarantee {
+      margin-top: 100px;
+      background: #fff;
+      border-radius: 20px;
+      padding: 60px 40px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .guarantee h2 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+
+    .guarantee p {
+      color: var(--primary);
+      font-size: 1.1rem;
+      margin-bottom: 40px;
+    }
+
+    .guarantee-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .guarantee-card {
+      background: var(--highlight);
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.4s ease;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .guarantee-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      background: #fff;
+    }
+
+    .guarantee-card i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .guarantee-card h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    .guarantee-card p {
+      color: var(--secondary);
+      font-size: 1rem;
+    }
+
+    /* ===== MEET THE TEAM ===== */
+    /* ======= MEET OUR TEAM SECTION ======= */
+#team {
+  background: var(--highlight);
+  padding: 80px 40px;
+  text-align: center;
+}
+
+#team h2 {
+  font-size: 2.5rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+#team p {
+  color: var(--secondary);
+  font-size: 1.1rem;
+  margin-bottom: 60px;
+}
+
+/* Team Container - 2 Columns x 2 Rows */
+.team-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  justify-items: center;
+  align-items: center;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Team Card Styling */
+.team-card {
+  background: #fff;
+  border-radius: 18px;
+  text-align: center;
+  padding: 40px 25px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s ease;
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Circular Profile Images */
+.team-card img {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--accent);
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover img {
+  border-color: var(--primary);
+  transform: scale(1.05);
+}
+
+/* Team Info */
+.team-info h2 {
+  font-size: 1.4rem;
+  color: var(--accent);
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.team-info h4 {
+  color: var(--primary);
+  font-weight: 600;
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.team-info p {
+  color: var(--primary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  max-width: 320px;
+  margin: 0 auto;
+}
+
+/* Accent Border Animation */
+.team-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 18px;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.team-card:hover::after {
+  border-color: var(--accent);
+}
+footer {
+  background-color: #1c1f23;
+  color: #fff;
+  position: relative;
+  padding: 40px 60px 20px;
+  overflow: hidden;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  margin-top: 60px;
+  margin-left: -28px;
+  margin-right: -28px;
+  margin-bottom: 0;
+  width: calc(100% + 56px);
+}
+
+footer::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background: #b31b1b;
+  clip-path: ellipse(70% 60% at 50% 100%);
+  z-index: 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  z-index: 1;
+  position: relative;
+}
+
+.footer-left {
+  max-width: 300px;
+}
+
+.footer-left img {
+  width: 40px;
+  height: 40px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+}
+
+.footer-left h3 {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  vertical-align: middle;
+  margin: 0;
+}
+
+.footer-left p {
+  font-size: 13px;
+  color: #ccc;
+  margin: 10px 0 15px;
+  line-height: 1.5;
+}
+
+.subscribe-box {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  width: 100%;
+  max-width: 250px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.subscribe-box input {
+  border: none;
+  outline: none;
+  padding: 10px;
+  flex: 1;
+  font-size: 13px;
+  color: #333;
+}
+
+.subscribe-box input::placeholder {
+  color: #999;
+}
+
+.subscribe-box button {
+  background: #d81e1e;
+  border: none;
+  color: #fff;
+  padding: 10px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
+.subscribe-box button:hover {
+  background: #b31616;
+}
+
+.footer-sections {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-section h4 {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section li {
+  margin-bottom: 6px;
+}
+
+.footer-section a {
+  color: #ccc;
+  font-size: 13px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.footer-section a:hover {
+  color: #d81e1e;
+}
+
+.footer-bottom {
+  margin-top: 40px;
+  border-top: 1px solid #333;
+  padding-top: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #aaa;
+  z-index: 1;
+  position: relative;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.footer-bottom a {
+  color: #aaa;
+  text-decoration: none;
+}
+
+.footer-bottom a:hover {
+  text-decoration: underline;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1d232a;
+  padding: 12px 40px;
+  height: 75px;
+}
+
+
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+
+.logo {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+.brand {
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+
+.brand .seat {
+  color: #fff;
+}
+
+
+.brand .scout {
+  color: #e63946;
+}
+
+
+.search-box {
+  margin-left: 20px;
+  width: 50%;
+  position: relative;
+}
+
+
+
+
+.search-box input {
+  padding: 10px 20px;
+  width: 500px;
+  border-radius: 25px;
+  border: 1px solid #555;
+  background-color: transparent;
+  color: #fff;
+  outline: none;
+  font-size: 0.95rem;
+}
+
+
+.search-box input::placeholder {
+  color: #ccc;
+}
+
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 90px;
+}
+
+
+.navbar-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+
+.navbar-links a:hover {
+  color: #e63946;
+}
+
+
+.navbar-links .login {
+  font-weight: 700;
+}
+
+
+@media (max-width: 768px) {
+  footer {
+    padding: 30px 30px 20px;
+  }
+
+  .footer-content {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-sections {
+    gap: 40px;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    gap: 5px;
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+  .team-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+    @media (max-width: 768px) {
+      .who-we-are {
+        flex-direction: column;
+      }
+      .team-container {
+        gap: 20px;
+        padding: 0 20px;
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-left">
+      <img src="images/logo.png" alt="Logo" class="logo">
+      <span class="brand"><span class="seat">Seat</span><span class="scout">Scout</span></span>
+      <div class="search-box">
+        <input type="text" placeholder="Search events">
+      </div>
+    </div>
+
+
+    <ul class="navbar-links">
+      <li><a href="#">Explore</a></li>
+      <li><a href="#">Favorites</a></li>
+      <li><a href="#">My Cart</a></li>
+      <li><a href="#">Help</a></li>
+      <li><a href="#" class="login">LOGIN/REGISTER</a></li>
+    </ul>
+  </nav>
+  <script>
+    const hamburger = document.getElementById('hamburger');
+    const navLinks = document.getElementById('navLinks');
+
+
+    hamburger.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+    });
+  </script>
+
+
+  <!-- HEADER -->
+  <header class="header">
+    <h1>About SeatScouts</h1>
+    <p>Get Your Tickets Now — Experience the World Tour Live</p>
+  </header>
+
+  <!-- WHO WE ARE -->
+  <section class="who-we-are">
+    <img src="pictures/group.png" alt="SeatScout Team">
+    <div class="who-content">
+      <h2>We’re SeatScout — Passionate About Every Seat</h2>
+      <p>At SeatScout, we believe that every event deserves to be experienced from the perfect seat. Our mission is to simplify ticketing by blending design, technology, and trust — so you can focus on the moment, not the hassle.</p>
+      <ul>
+        <li><i class="fa-solid fa-users"></i> A dedicated team of tech and event enthusiasts.</li>
+        <li><i class="fa-solid fa-ticket"></i> Experts in ticketing, seating, and user experience.</li>
+        <li><i class="fa-solid fa-heart"></i> Driven by passion, powered by innovation.</li>
+      </ul>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- WE GUARANTEE YOU -->
+  <section class="guarantee" id="guarantee">
+    <h2>We Guarantee You</h2>
+    <p>Your trust is our top priority — here’s what you can always expect from SeatScout.</p>
+
+    <div class="guarantee-grid">
+      <div class="guarantee-card">
+        <i class="fa-solid fa-lock"></i>
+        <h3>Secure Transactions</h3>
+        <p>Every payment and ticket purchase is protected with advanced encryption and verified sellers.</p>
+      </div>
+      <div class="guarantee-card">
+        <i class="fa-solid fa-bolt"></i>
+        <h3>Fast & Reliable Booking</h3>
+        <p>Enjoy smooth booking and real-time seat updates, ensuring you never miss your favorite event.</p>
+      </div>
+      <div class="guarantee-card">
+        <i class="fa-solid fa-star"></i>
+        <h3>Authentic Tickets</h3>
+        <p>We partner only with trusted event organizers and verified sellers to deliver 100% genuine tickets.</p>
+      </div>
+      <div class="guarantee-card">
+        <i class="fa-solid fa-headset"></i>
+        <h3>24/7 Support</h3>
+        <p>Our customer support team is always ready to assist — before, during, and after your booking.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- MEET THE TEAM -->
+  <section id="team">
+    <h2>Meet Our Team</h2>
+    <p>The people behind your seamless SeatScout experience</p>
+
+    <div class="team-container">
+      <div class="team-card">
+        <img src="pictures/arellano.png" alt="Project Manager">
+        <div class="team-info">
+          <h2>Ayenna Verna Arellano</h2>
+          <h4>Project Manager</h4>
+          <p>Leads the development process, ensuring goals are achieved on time and the platform maintains high quality.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="pictures/chikie.jpg" alt="Information Architect">
+        <div class="team-info">
+          <h2>Chicqui Mie Benitez</h2>
+          <h4>Information Architect</h4>
+          <p>Designs user flows and structures the data for efficient navigation and excellent user experience.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="pictures/cariaga.png" alt="Content Manager">
+        <div class="team-info">
+          <h2>Jean Leslie Cariaga</h2>
+          <h4>Content Manager</h4>
+          <p>Ensures all content and visuals across the platform stay relevant, engaging, and on-brand.</p>
+        </div>
+      </div>
+
+      <div class="team-card">
+        <img src="pictures/adanza.jpg" alt="Full Stack Developer">
+        <div class="team-info">
+          <h2>Kend Harley Adanza</h2>
+          <h4>Full Stack Developer</h4>
+          <p>Develops and maintains both frontend and backend systems, ensuring security and seamless performance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+   <footer>
+    <div class="footer-content">
+      <!-- Left side -->
+      <div class="footer-left">
+        <div style="display: flex; align-items: center;">
+          <img src="images/logo.png" alt="SeatScout Logo">
+          <h3>SeatScout</h3>
+        </div>
+        <p>Stay in the know by subscribing to our newsletter below.</p>
+        <div class="subscribe-box">
+          <input type="email" placeholder="Enter your email address">
+          <button>→</button>
+        </div>
+      </div>
+
+
+      <!-- Right side -->
+      <div class="footer-sections">
+        <div class="footer-section">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About SeatScout</a></li>
+          </ul>
+        </div>
+
+
+        <div class="footer-section">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="contact-form.html">Contact Form</a></li>
+            <li><a href="about.html">FAQ</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">T&C</a></li>
+          </ul>
+        </div>
+
+
+        <div class="footer-section">
+          <h4>Social</h4>
+          <ul>
+            <li><a href="facebook.html">Facebook</a></li>
+            <li><a href="youtube.html">Youtube</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="footer-bottom">
+      <span>© SeatScout. All Rights Reserved 2025</span>
+      <a href="#">Terms & Conditions</a>
+    </div>
+  </footer>
+
+</body>
+</html>
