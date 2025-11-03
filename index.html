@@ -6,16 +6,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SeatScout</title>
   <link rel="stylesheet" href="style/index.css">
-  <style>
-  </style>
 </head>
+
 <body>
   <!-- Navbar -->
   <header>
     <nav class="navbar">
       <div class="navbar-inner">
         <div class="navbar-left">
-          <img src="images/logo.png" alt="Logo" class="logo">
+          <div class="logo"><img src="images/logo.png" alt="" srcset=""></div>
           <span class="brand"><span class="seat">Seat</span><span class="scout">Scout</span></span>
           <div class="search-box">
             <input type="text" placeholder="Search events">
@@ -26,7 +25,7 @@
           <li><a href="#">Favorites</a></li>
           <li><a href="#">My Cart</a></li>
           <li><a href="#">Help</a></li>
-          <li><a href="login.html" class="login">LOGIN/REGISTER</a></li>
+          <li><a href="#" class="login">LOGIN/REGISTER</a></li>
         </ul>
       </div>
     </nav>
@@ -37,11 +36,9 @@
     <!-- Carousel -->
     <section id="home">
       <div class="carousel" id="carousel">
-        <!-- slide 0 -->
         <div class="slide active" data-spot="30% 55%">
-          <img src="images/Telor-swip.jpg" alt="Taylor Swift" />
+          <img src="images/Telor-swip.jpg" alt="Taylor Swift">
           <div class="spotlight"></div>
-
           <div class="overlay">
             <h2>Taylor Swift</h2>
             <button class="btn">See Tickets</button>
@@ -54,11 +51,9 @@
           </div>
         </div>
 
-        <!-- slide 1 -->
         <div class="slide" data-spot="70% 45%">
-          <img src="images/boi-marilag.jpg" alt="Artist 2" />
+          <img src="images/dionela1.jpg" alt="Dionela">
           <div class="spotlight"></div>
-
           <div class="overlay">
             <h2>Dionela</h2>
             <button class="btn">See Tickets</button>
@@ -71,11 +66,9 @@
           </div>
         </div>
 
-        <!-- slide 2 -->
         <div class="slide" data-spot="50% 30%">
-          <img src="images/doge-coin.jpg" alt="Artist 3" />
+          <img src="images/doge-coin.jpg" alt="Doja cat">
           <div class="spotlight"></div>
-
           <div class="overlay">
             <h2>Doja Cat</h2>
             <button class="btn">See Tickets</button>
@@ -88,11 +81,9 @@
           </div>
         </div>
 
-        <!-- slide 3 -->
         <div class="slide" data-spot="50% 30%">
-          <img src="images/mcr.jpg" alt="Artist 4" />
+          <img src="images/mcr.jpg" alt="MCR">
           <div class="spotlight"></div>
-
           <div class="overlay">
             <h2>My Chemical Romance</h2>
             <button class="btn">See Tickets</button>
@@ -111,11 +102,11 @@
         <div class="browse-wrapper">
           <label for="browse" class="browse-label">Browse Events</label>
           <select id="browse" class="browse-select">
-            <option>Trending in Manila</option>
-            <option>Concerts in Manila</option>
-            <option>Theater in Manila</option>
-            <option>Sports in Manila</option>
-            <option>Talkshows in Manila</option>
+            <option value="trending">Trending in Manila</option>
+            <option value="concerts">Concerts in Manila</option>
+            <option value="theater">Theater in Manila</option>
+            <option value="sports">Sports in Manila</option>
+            <option value="talkshow">Talkshows in Manila</option>
           </select>
         </div>
 
@@ -140,6 +131,7 @@
         </div>
       </div>
 
+      <!-- Trending Events Section -->
       <section class="trending-events" id="trendingSection">
         <div class="section-header">
           <h2 id="trendingTitle">Trending Events near Manila</h2>
@@ -152,24 +144,23 @@
         </div>
       </section>
 
-
       <!-- Popular Categories -->
       <section class="popular-categories">
         <h2>Popular Category</h2>
         <div class="popular-categories-box">
-          <a href="explore.html?category=concert">
-            <img src="images/concert-popular.jpg" alt="Concert">
+          <a href="#">
+            <img src="images/concert-popular.jpg" alt="Shrek: The Musical">
             <div class="overlay">Concert</div>
           </a>
-          <a href="explore.html?category=talkshow">
-            <img src="images/talkshow-popular.avif" alt="TalkShow">
+          <a href="#">
+            <img src="images/talkshow-popular.avif" alt="Shrek: The Musical">
             <div class="overlay">TalkShow</div>
           </a>
-          <a href="explore.html?category=sports">
-            <img src="images/sports-popular.jpg" alt="Sports">
+          <a href="#">
+            <img src="images/sports-popular.jpg" alt="Shrek: The Musical">
             <div class="overlay">Sports</div>
           </a>
-          <a href="explore.html?category=theater">
+          <a href="#">
             <img src="images/theater-popular.jpg" alt="Theater">
             <div class="overlay">Theater</div>
           </a>
@@ -180,80 +171,27 @@
       <section class="trending-events">
         <div class="section-header">
           <h2>Concert</h2>
-          <a href="explore.html?category=concert" class="explore-link">Explore Concert →</a>
+          <a href="#" class="explore-link">Explore Concert →</a>
         </div>
         <div class="carousel-container">
           <button class="carousel-btn left">&#10094;</button>
           <div class="event-carousel">
-            <div class="event-card"><img src="images/jong.jpg">
-              <div class="event-info">
-                <h3>Jong Madaliday</h3>
-                <p>New Frontier · Nov 29, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/dionela.jpg">
-              <div class="event-info">
-                <h3>Dionela</h3>
-                <p>SM Arena · Nov 22, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/blackpink.jpg">
-              <div class="event-info">
-                <h3>BlackPink</h3>
-                <p>Bulacan · Nov 22, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/taylor.jpg">
-              <div class="event-info">
-                <h3>Taylor Swift</h3>
-                <p>MOA Arena · Dec 12, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/weeknd.jpg">
-              <div class="event-info">
-                <h3>The Weeknd</h3>
-                <p>SM Arena · Dec 20, 2025</p>
-              </div>
-            </div>
-          </div>
-          <button class="carousel-btn right">&#10095;</button>
-        </div>
-      </section>
-
-      <!-- Theater -->
-      <section class="trending-events">
-        <div class="section-header">
-          <h2>Theater</h2>
-          <a href="explore.html?category=theater" class="explore-link">Explore Theater →</a>
-        </div>
-        <div class="carousel-container">
-          <button class="carousel-btn left">&#10094;</button>
-          <div class="event-carousel">
-            <div class="event-card"><img src="images/shrek.jpg">
-              <div class="event-info">
-                <h3>Shrek: The Musical</h3>
-                <p>SM Arena · Dec 12, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/dragon.jpg">
-              <div class="event-info">
-                <h3>How to Train Your Dragon</h3>
-                <p>SM Arena · Dec 13, 2025</p>
-              </div>
-            </div>
-            <div class="event-card"><img src="images/disney.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
               <div class="event-info">
                 <h3>Disney: Magic in the Stars</h3>
                 <p>SM Arena · Dec 20, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/lionking.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></div>
               <div class="event-info">
                 <h3>The Lion King</h3>
                 <p>Resorts World · Dec 23, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/phantom.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #30cfd0 0%, #330867 100%)"></div>
               <div class="event-info">
                 <h3>Phantom of the Opera</h3>
                 <p>Newport · Jan 03, 2026</p>
@@ -268,36 +206,41 @@
       <section class="trending-events">
         <div class="section-header">
           <h2>Sports</h2>
-          <a href="explore.html?category=sports" class="explore-link">Explore Sports →</a>
+          <a href="#" class="explore-link">Explore Sports →</a>
         </div>
         <div class="carousel-container">
           <button class="carousel-btn left">&#10094;</button>
           <div class="event-carousel">
-            <div class="event-card"><img src="images/pba.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
               <div class="event-info">
                 <h3>PBA Season 50</h3>
                 <p>Ilocos Sur · Oct 18, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/run.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
               <div class="event-info">
                 <h3>Run Asia Series</h3>
                 <p>SM Arena · Dec 11, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/boxing.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
               <div class="event-info">
                 <h3>Pacquiao Exhibition</h3>
                 <p>Quezon City · Dec 28, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/mma.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></div>
               <div class="event-info">
                 <h3>One Championship</h3>
                 <p>MOA Arena · Jan 10, 2026</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/esports.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #30cfd0 0%, #330867 100%)"></div>
               <div class="event-info">
                 <h3>Valorant Masters</h3>
                 <p>Pasay · Jan 25, 2026</p>
@@ -306,42 +249,49 @@
           </div>
           <button class="carousel-btn right">&#10095;</button>
         </div>
+
+
       </section>
 
       <!-- TalkShow -->
       <section class="trending-events">
         <div class="section-header">
           <h2>TalkShow</h2>
-          <a href="explore.html?category=talkshow" class="explore-link">Explore TalkShow →</a>
+          <a href="#" class="explore-link">Explore TalkShow →</a>
         </div>
         <div class="carousel-container">
           <button class="carousel-btn left">&#10094;</button>
           <div class="event-carousel">
-            <div class="event-card"><img src="images/odette.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
               <div class="event-info">
                 <h3>Odette Quesada & Ogie</h3>
                 <p>SM Arena · Nov 07, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/comedy.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
               <div class="event-info">
                 <h3>Comedy Manila</h3>
                 <p>SM Arena · Nov 27, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/podcast.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)"></div>
               <div class="event-info">
                 <h3>Live Podcast Session</h3>
                 <p>Makati · Dec 02, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/late.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></div>
               <div class="event-info">
                 <h3>The Late Night Show</h3>
                 <p>Quezon City · Dec 10, 2025</p>
               </div>
             </div>
-            <div class="event-card"><img src="images/motivational.jpg">
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #30cfd0 0%, #330867 100%)"></div>
               <div class="event-info">
                 <h3>Motivational Forum</h3>
                 <p>Pasig · Jan 04, 2026</p>
@@ -351,23 +301,78 @@
           <button class="carousel-btn right">&#10095;</button>
         </div>
       </section>
+      <!-- Theater -->
+      <section class="trending-events">
+        <div class="section-header">
+          <h2>Theater</h2>
+          <a href="#" class="explore-link">Explore Theater →</a>
+        </div>
+
+        <div class="carousel-container">
+          <button class="carousel-btn left">&#10094;</button>
+          <div class="event-carousel">
+
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #667eea 0%, #764ba2 100%)"></div>
+              <div class="event-info">
+                <h3>Shrek: The Musical</h3>
+                <p>SM Arena · Dec 12, 2025</p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #f093fb 0%, #f5576c 100%)"></div>
+              <div class="event-info">
+                <h3>How to Train Your Dragon</h3>
+                <p>SM Arena · Dec 13, 2025</p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)"></div>
+              <div class="event-info">
+                <h3>The Little Mermaid</h3>
+                <p>New Frontier · Dec 15, 2025</p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #fa709a 0%, #fee140 100%)"></div>
+              <div class="event-info">
+                <h3>Les Misérables</h3>
+                <p>MOA Arena · Dec 18, 2025</p>
+              </div>
+            </div>
+
+            <div class="event-card">
+              <div style="width:100%;height:180px;background:linear-gradient(135deg, #30cfd0 0%, #330867 100%)"></div>
+              <div class="event-info">
+                <h3>Phantom of the Opera</h3>
+                <p>SM North EDSA · Dec 20, 2025</p>
+              </div>
+            </div>
+
+          </div>
+          <button class="carousel-btn right">&#10095;</button>
+        </div>
+      </section>
+
     </section>
+
     <footer>
       <div class="footer-content">
-        <!-- Left side -->
         <div class="footer-left">
           <div style="display: flex; align-items: center;">
-            <img src="images/logo.png" alt="SeatScout Logo">
+            <div class="logo">SS</div>
             <h3>SeatScout</h3>
           </div>
-          <p>Stay in the know by subscribing to our we below.</p>
+          <p>Stay in the know by subscribing to our newsletter below.</p>
           <div class="subscribe-box">
             <input type="email" placeholder="Enter your email address">
             <button>→</button>
           </div>
         </div>
 
-        <!-- Right side -->
         <div class="footer-sections">
           <div class="footer-section">
             <h4>Company</h4>
@@ -380,7 +385,7 @@
           <div class="footer-section">
             <h4>Contact</h4>
             <ul>
-              <li><a href="contact-form.html">Contact Form</a></li>
+              <li><a href="#">Contact Form</a></li>
               <li><a href="#">FAQ</a></li>
               <li><a href="#">Privacy Policy</a></li>
               <li><a href="#">T&C</a></li>
@@ -390,8 +395,8 @@
           <div class="footer-section">
             <h4>Social</h4>
             <ul>
-              <li><a href="facebook.html">Facebook</a></li>
-              <li><a href="youtube.html">Youtube</a></li>
+              <li><a href="#">Facebook</a></li>
+              <li><a href="#">Youtube</a></li>
               <li><a href="#">Twitter</a></li>
               <li><a href="#">LinkedIn</a></li>
             </ul>
@@ -404,6 +409,7 @@
         <a href="#">Terms & Conditions</a>
       </div>
     </footer>
+
     <script src="js/index.js"></script>
   </main>
 </body>
